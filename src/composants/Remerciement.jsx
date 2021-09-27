@@ -10,7 +10,8 @@ const Remerciement = (props) => {
       <div className="form-group mb-3 ">
         <input
           type="text"
-          maxlength="20"
+          maxLength={20}
+          placeholder="Changez le prénom"
           className="form-control shadow-lg p-3 rounded"
           onChange={(event) => setnom(event.target.value)}
         />

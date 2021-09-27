@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
 
@@ -13,20 +12,13 @@ const Formulaire = ({ template }) => {
     const { first_name } = DonneeSauvegarde;
 
     history.push(`/merci/${first_name}`);
-  };
 
-  // L'envoi du POST
-  useEffect(
-    () =>
-      fetch("https://enovode7uq1r.x.pipedream.net/", {
-        method: "POST",
-        body: localStorage.getItem("form"),
-      }).then((response) => {
-        response.json();
-        console.log(response);
-      }),
-    []
-  );
+    // l'envoi du POST
+    fetch("https://enovode7uq1r.x.pipedream.net/", {
+      method: "POST",
+      body: localStorage.getItem("form"),
+    }).then((response) => response.json());
+  };
 
   const renderOptions = (options) => {
     return options.map((_option) => {
@@ -47,8 +39,9 @@ const Formulaire = ({ template }) => {
       switch (type) {
         case "text":
           return (
-            <div className="form-outline p-2 col" key={name}>
+            <div key={name} className="form-outline p-2 col">
               <input
+                key={name}
                 id={name}
                 type={type}
                 className="form-control bg-light bg-gradient mb-3 border-0 rounded p-2 shadow-lg "
@@ -61,15 +54,18 @@ const Formulaire = ({ template }) => {
 
         case "dropdown":
           return (
-            <div className="form-group mb-4 p-2 col" key={name}>
+            <div key={name} className="form-group mb-4 p-2 col">
               <select
+                key={name}
                 id={name}
                 name={name}
                 className="form-select border-0 p-2 shadow-lg bg-light"
                 aria-label="Default select example"
                 {...register(name)}
               >
-                <option defaultValue>Selectionnez votre {label}</option>
+                <option key={name} defaultValue>
+                  Selectionnez votre {label}
+                </option>
                 {renderOptions(options, label)}
               </select>
             </div>
@@ -77,7 +73,7 @@ const Formulaire = ({ template }) => {
 
         default:
           return (
-            <div>
+            <div key={"1"}>
               <span key={"1"} class="text-danger">
                 Champ invalide
               </span>
@@ -88,11 +84,14 @@ const Formulaire = ({ template }) => {
   };
 
   const renderQuestions = () => {
-    return template.map((questions, id) => {
+    return template.map((questions) => {
       let { title, fields } = questions;
       return (
-        <div className="col" key={id}>
-          <div className="border px-3 mt-4 border-2 bg-gradient shadow-sm rounded">
+        <div key={title} className="col">
+          <div
+            key={title}
+            className="border px-3 mt-4 border-2 bg-gradient shadow-sm rounded"
+          >
             <h3 className=" mt-4 d-flex text-wrap flex-column mb-4 text-center">
               {title}
             </h3>
