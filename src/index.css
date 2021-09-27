@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-weight: 400;
+  font-family: sans-serif;
+  background: #12c2e9; /* pour vieux navigateurs */
+  background: -webkit-linear-gradient(
+    to right,
+    #604dcc,
+    #7899d8,
+    #4220dd
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #604dcc,
+    #7899d8,
+    #4220dd
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+body,
+html,
+.App,
+#root,
+.outer {
+  width: 100%;
+  height: 100%;
+}
+
+h3 {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.outer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.inner {
+  margin: 0 auto;
+}
+
+.outer .form-control:focus {
+  border-bottom: 3px solid #0b5ed7 !important;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px !important;
+  color: #302f38;
+  transition: all 0.2s ease-in-out;
+}
+
+.outer .form-select:focus {
+  border-bottom: 3px solid #0b5ed7 !important;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px !important;
+  color: #302f38;
+  transition: all 0.2s ease-in-out;
+  color: #0b5ed7;
+}
+
+.outer .form-control::placeholder {
+  font-size: 1rem;
+  opacity: 0.5;
+  text-align: center;
+}
